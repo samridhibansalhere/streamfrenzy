@@ -4,6 +4,8 @@ import { useParams } from "next/navigation";
 import { message } from "antd";
 import { getUserSubscription } from "@/server-actions/users";
 import { getDateTimeFormat } from "@/helpers/date-time-formats";
+import Loading from "@/app/loading";
+
 
 const UserSubscriptionPage = () => {
   const { id } = useParams();
@@ -31,7 +33,7 @@ const UserSubscriptionPage = () => {
     fetchSubscription();
   }, [userId]);
 
-  if (loading) return <div className="text-center text-gray-500">Loading...</div>;
+  if (loading) return <Loading />; // Use the Loading component here
 
   const renderSubscriptionProperty = (label: string, value: string) => {
     return (
