@@ -6,7 +6,8 @@ import { getUserSubscription } from "@/server-actions/users";
 import { getDateTimeFormat } from "@/helpers/date-time-formats";
 
 const UserSubscriptionPage = () => {
-  const { id: userId } = useParams();
+  const { id } = useParams();
+  const userId = Array.isArray(id) ? id[0] : id;
   const [subscription, setSubscription] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
